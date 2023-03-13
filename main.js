@@ -1,5 +1,8 @@
 import * as Upload from "upload-js-full";
 import fetch from "node-fetch";
+import fs from "fs";
+
+const buffer = fs.readFileSync("test-image.png");
 
 const uploadManager = new Upload.UploadManager(
   new Upload.Configuration({
@@ -17,13 +20,13 @@ uploadManager
 
     accountId: "W142hJk", 
 
-    data: Buffer.from("Hello World", "utf8"),
+    data: buffer,
 
     // Required when: 'data' is a stream, buffer, or string.
-    mime: "text/plain",
+    mime: "image/png",
 
     // Required when: 'data' is a stream, buffer, or string.
-    originalFileName: "my_file.txt",
+    originalFileName: "test-image.png",
 
   })
   .then(
